@@ -52,6 +52,8 @@ Fire on demand too, whenever they ask what something is.
 
 4. **If it already exists, NEVER overwrite it.** Read the note, add one new line under "Where it is", and stop there. The "My notes" section belongs to them: preserve it byte for byte, even if empty, even if it contains something that looks wrong.
 
+   **One exception, the empty stub.** Clicking a pending link in Obsidian's graph creates the file immediately, with nothing in it, and by default at the vault root rather than in `concepts/`. A file with no content is not a note anyone wrote, so fill it from the template and move it into `concepts/`. One line of their own text is enough to make it a real note, and then this exception no longer applies.
+
 5. **Update `index.md`** with the new concept, grouped by theme.
 
 6. **Update the project note** in `projects/<name>.md`, listing the concepts it uses.

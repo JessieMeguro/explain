@@ -86,6 +86,8 @@ Open Obsidian, choose "Open folder as vault", point it at `~/tech-vault/`, and o
 - Turning **Existing files only** off shows pending links, the concepts the skill mentioned but has not documented yet. That is your reading queue.
 - Under **Groups**, add a filter for `confidence:not-reviewed` in a strong colour, so the graph shows you at a glance what you have not sat with yet.
 
+One setting is worth changing straight away. Under **Settings, Files and links**, set "Default location for new notes" to `concepts/`. Clicking a pending node in the graph creates that note on the spot, and the default drops it at the vault root instead of with the others.
+
 If you would rather not leave your editor, the **Foam** extension renders graphs and wikilinks inside Cursor from the same folder.
 
 ## The weekly ritual
