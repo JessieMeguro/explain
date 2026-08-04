@@ -9,7 +9,7 @@ confidence: not-reviewed
 
 <!--
 Frontmatter keys stay in English in every vault.
-Prose and headings go in the reader's language, from perfil.md.
+Prose and headings go in the reader's language, from profile.md.
 -->
 
 ## The problem it solved here
@@ -22,7 +22,7 @@ Prose and headings go in the reader's language, from perfil.md.
 
 ## Analogy
 
-{{One comparison, drawn from the repertoire in perfil.md. If it needs explaining, it has become a second subject to learn.}}
+{{One comparison, drawn from the repertoire in profile.md. If it needs explaining, it has become a second subject to learn.}}
 
 **Where the analogy breaks:** {{the limit the reader would hit on their own}}
 
@@ -54,4 +54,4 @@ Prose and headings go in the reader's language, from perfil.md.
 
 ## My notes
 
-<!-- Their space. The AI never writes here, except to transcribe their own words during /revisar. -->
+<!-- Their space. The AI never writes here, except to transcribe their own words during /review. -->

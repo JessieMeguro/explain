@@ -1,6 +1,6 @@
 # Index
 
-The general map of this vault. The `explica-pra-mim` skill adds every new concept here, grouped by theme.
+The general map of this vault. The `explain-it-to-me` skill adds every new concept here, grouped by theme.
 
 This is the way in when you cannot remember the name of what you are looking for. To see the connections instead, open Obsidian's graph view.
 
@@ -20,4 +20,4 @@ This is the way in when you cannot remember the name of what you are looking for
 
 ## Projects
 
-<!-- One line per project, pointing at its note in projetos/. -->
+<!-- One line per project, pointing at its note in projects/. -->

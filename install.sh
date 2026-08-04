@@ -1,21 +1,21 @@
 #!/usr/bin/env bash
 set -euo pipefail
 
-# Installer for the explica-pra-mim skill.
+# Installer for the explain-it-to-me skill.
 # Two ways to run it:
 #   curl -fsSL https://raw.githubusercontent.com/JessieMeguro/obsidian/main/install.sh | bash
 #   ./install.sh   (from inside a clone of the repository)
 
 REPO_URL="https://github.com/JessieMeguro/obsidian.git"
-SKILL_NAME="explica-pra-mim"
-VAULT_PATH="${VAULT_PATH:-$HOME/vault-tecnico}"
+SKILL_NAME="explain-it-to-me"
+VAULT_PATH="${VAULT_PATH:-$HOME/tech-vault}"
 
 info()  { printf '  %s\n' "$1"; }
 ok()    { printf '  ok    %s\n' "$1"; }
 skip()  { printf '  kept  %s\n' "$1"; }
 fail()  { printf 'error: %s\n' "$1" >&2; exit 1; }
 
-printf '\nexplica-pra-mim\n\n'
+printf '\nexplain-it-to-me\n\n'
 
 # --- 1. Locate the skill files ---------------------------------------------
 
@@ -43,22 +43,22 @@ SKILL_SRC="$REPO_DIR/skills/$SKILL_NAME"
 
 printf '\nvault at %s\n' "$VAULT_PATH"
 
-mkdir -p "$VAULT_PATH/conceitos" "$VAULT_PATH/projetos"
-ok "conceitos/ and projetos/"
+mkdir -p "$VAULT_PATH/concepts" "$VAULT_PATH/projects"
+ok "concepts/ and projects/"
 
-if [ -f "$VAULT_PATH/indice.md" ]; then
-  skip "indice.md, left as it was"
+if [ -f "$VAULT_PATH/index.md" ]; then
+  skip "index.md, left as it was"
 else
-  cp "$REPO_DIR/vault-template/indice.md" "$VAULT_PATH/indice.md"
-  ok "indice.md created"
+  cp "$REPO_DIR/vault-template/index.md" "$VAULT_PATH/index.md"
+  ok "index.md created"
 fi
 
 # The profile is personal: never overwrite it.
-if [ -f "$VAULT_PATH/perfil.md" ]; then
-  skip "perfil.md, left as it was"
+if [ -f "$VAULT_PATH/profile.md" ]; then
+  skip "profile.md, left as it was"
 else
-  cp "$SKILL_SRC/assets/template-perfil.md" "$VAULT_PATH/perfil.md"
-  ok "perfil.md created (fill it in so the skill knows you)"
+  cp "$SKILL_SRC/assets/profile-template.md" "$VAULT_PATH/profile.md"
+  ok "profile.md created (fill it in so the skill knows you)"
 fi
 
 # --- 3. Install the skill --------------------------------------------------
@@ -78,10 +78,10 @@ cat <<EOF
 
 done.
 
-  1. Fill in $VAULT_PATH/perfil.md with your profession and your analogies.
+  1. Fill in $VAULT_PATH/profile.md with your profession and your analogies.
   2. Open $VAULT_PATH in Obsidian, with "Open folder as vault".
   3. Restart your agent so it loads the skill.
 
 From then on the skill documents on its own at the end of each delivery.
-On demand: /explica <term>. To review what you have: /revisar.
+On demand: /explain <term>. To review what you have: /review.
 EOF

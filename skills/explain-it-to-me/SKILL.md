@@ -1,9 +1,9 @@
 ---
-name: explica-pra-mim
+name: explain-it-to-me
 description: Documents and explains every new technical concept that comes up while working, writing linked markdown notes into a personal Obsidian vault. Use ALWAYS after generating or changing code, choosing a library, applying an architecture pattern, or using any technical term that has no note in the vault yet. Also use when the person says "I don't get it", "what is this", "explain this to me", "why did you do it this way", or the equivalent in their own language ("não entendi", "o que é isso", "me explica", "por que você fez assim"). When unsure whether something is worth documenting, document it.
 ---
 
-# Explica pra mim
+# Explain it to me
 
 The goal is narrow: the person must not end a working session with code they cannot maintain.
 
@@ -11,20 +11,20 @@ A concept that slips by today becomes a blocker three weeks from now, when they 
 
 ## Who the reader is
 
-Read `perfil.md` at the vault root before writing anything. It declares their profession, what they already know, what is not their territory, the analogy repertoire that works for them, and the language for notes.
+Read `profile.md` at the vault root before writing anything. It declares their profession, what they already know, what is not their territory, the analogy repertoire that works for them, and the language for notes.
 
-If `perfil.md` does not exist, assume the default: **someone who reads code and follows logic, but for whom infrastructure vocabulary, architecture patterns and the library ecosystem are unfamiliar.** Write in the language they use in conversation.
+If `profile.md` does not exist, assume the default: **someone who reads code and follows logic, but for whom infrastructure vocabulary, architecture patterns and the library ecosystem are unfamiliar.** Write in the language they use in conversation.
 
 ## Where the vault lives
 
-Read `VAULT_PATH` from the project `.env`, or use `~/vault-tecnico/`.
+Read `VAULT_PATH` from the project `.env`, or use `~/tech-vault/`.
 
 ```
-vault-tecnico/
-├── perfil.md          who the reader is, read before writing
-├── indice.md          general map, updated with every new note
-├── conceitos/         one note per concept
-└── projetos/          one note per project, listing what it uses
+tech-vault/
+├── profile.md         who the reader is, read before writing
+├── index.md           general map, updated with every new note
+├── concepts/          one note per concept
+└── projects/          one note per project, listing what it uses
 ```
 
 If the folder does not exist, create it and say so in the chat.
@@ -44,21 +44,21 @@ Fire on demand too, whenever they ask what something is.
 
 1. **List the concepts** that came up. Be generous: `useEffect`, `debounce`, `environment variable`, `composite index`, `server component`, `migration` are all valid candidates. Skip only what is genuinely trivial (`if`, `for`, a variable name).
 
-2. **Check the vault.** For each concept, look for `conceitos/<slug>.md`. The slug is kebab-case with no accents: `variavel-de-ambiente.md`, `server-component.md`.
+2. **Check the vault.** For each concept, look for `concepts/<slug>.md`. The slug is kebab-case with no accents, in the same language as the note, so a Portuguese vault holds `variavel-de-ambiente.md` and an English one holds `environment-variable.md`.
 
-3. **If it does not exist, create it** using `assets/template-nota.md`.
+3. **If it does not exist, create it** using `assets/note-template.md`.
 
 4. **If it already exists, NEVER overwrite it.** Read the note, add one new line under "Where it is", and stop there. The "My notes" section belongs to them: preserve it byte for byte, even if empty, even if it contains something that looks wrong.
 
-5. **Update `indice.md`** with the new concept, grouped by theme.
+5. **Update `index.md`** with the new concept, grouped by theme.
 
-6. **Update the project note** in `projetos/<name>.md`, listing the concepts it uses.
+6. **Update the project note** in `projects/<name>.md`, listing the concepts it uses.
 
 7. **Summarise in the chat**, in 5 lines or fewer: what was built, which notes you created, and the one thing they need to know to change it alone later.
 
 ## Selection mode
 
-When they ask for a specific term, with `/explica <term>` or with a snippet selected in the editor, document **only that**. Do not sweep the project, do not create context notes they did not ask for.
+When they ask for a specific term, with `/explain <term>` or with a snippet selected in the editor, document **only that**. Do not sweep the project, do not create context notes they did not ask for.
 
 - **Named term:** follow the normal flow for that single concept.
 - **Selected code with no term:** identify the central concept in the snippet, say which one you picked, and document it. If more than one strong candidate exists, ask before writing.
@@ -66,9 +66,9 @@ When they ask for a specific term, with `/explica <term>` or with a snippet sele
 
 ## Review mode
 
-When they ask for `/revisar`, the point is not for you to explain again. It is for them to recall the concept from memory, because rereading the AI's note transfers nothing and rewriting it in their own words does.
+When they ask for `/review`, the point is not for you to explain again. It is for them to recall the concept from memory, because rereading the AI's note transfers nothing and rewriting it in their own words does.
 
-1. List the notes in `conceitos/` with `confidence: not-reviewed` in the frontmatter. If there are many, take the 3 oldest.
+1. List the notes in `concepts/` with `confidence: not-reviewed` in the frontmatter. If there are many, take the 3 oldest.
 2. For each one, ask **one** open question and do not show the note: "what is `debounce`, in your own words?"
 3. Wait for their answer. Only then show the note and point out the gap between the two versions, if there is one.
 4. Write **their** answer under "My notes". This is the only circumstance in which you touch that section, and even here you use their words, not a rewrite of them.
@@ -90,7 +90,7 @@ Open with the actual problem from their project, then define the term. The rever
 
 **Cascading jargon.** If the definition of a concept uses another technical term, you have two options and no third. Either explain that term right there in parentheses, or create its note too and link it with a `[[wikilink]]`. Never leave an unexplained term inside an explanation.
 
-**Concrete analogy.** Every note carries one analogy, drawn from the repertoire declared in `perfil.md`. Four constraints on it:
+**Concrete analogy.** Every note carries one analogy, drawn from the repertoire declared in `profile.md`. Four constraints on it:
 
 - It comes from what the reader already commands. An analogy that needs explaining has become a second subject to learn.
 - One per concept. Stacked analogies make the reader spend attention comparing the comparisons.
@@ -130,11 +130,11 @@ Also banned: em dashes, staccato of the "Not X. Y." kind, and more than two line
 
 ## Note format
 
-Follow `assets/template-nota.md`.
+Follow `assets/note-template.md`.
 
 **Frontmatter keys stay in English** in every vault, whatever the note language, so that graph filters and search work the same everywhere: `type`, `created`, `projects`, `confidence`.
 
-**Prose and section headings go in the reader's language**, taken from `perfil.md`. Translate the headings, and once a vault has notes, match the headings already in use there so the vault stays consistent.
+**Prose and section headings go in the reader's language**, taken from `profile.md`. Translate the headings, and once a vault has notes, match the headings already in use there so the vault stays consistent.
 
 Wikilinks are what draw the web in Obsidian. Link generously: parent concept, sibling concepts, the project where it showed up. A link to a note that does not exist yet is good rather than broken: it marks the next concept to document.
 
@@ -142,7 +142,7 @@ Wikilinks are what draw the web in Obsidian. Link generously: parent concept, si
 
 **Context:** you have just added a `debounce` to a search field.
 
-Note created at `conceitos/debounce.md`:
+Note created at `concepts/debounce.md`:
 
 > ## The problem it solved here
 > The search field was firing one database query per keystroke. Typing "candle" produced 6 queries instead of 1.
