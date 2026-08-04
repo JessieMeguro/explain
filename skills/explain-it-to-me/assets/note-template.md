@@ -14,15 +14,15 @@ Prose and headings go in the reader's language, from profile.md.
 
 ## The problem it solved here
 
-{{The concrete problem in this project, before any definition. What was breaking, or what would break without this. Not the textbook motivation.}}
+{{A moment that happened, in the second person. What they were doing, and what went wrong or would have gone wrong. A list of design requirements is not a scene.}}
 
 ## What it is
 
-{{Two or three sentences. No unexplained jargon. If another technical term is needed, explain it in parentheses or link it with a wikilink.}}
+{{First a plain sentence under fifteen words, standing alone, no second clause. Then two or three sentences building on it. One term new to the reader per paragraph, at most.}}
 
 ## Analogy
 
-{{One comparison, drawn from the repertoire in profile.md. If it needs explaining, it has become a second subject to learn.}}
+{{One comparison from ordinary life anyone has lived: drawers, a queue, a recipe, post-its, sending a letter. Never from software or a developer's workflow, even when the concept is about software.}}
 
 **Where the analogy breaks:** {{the limit the reader would hit on their own}}
 

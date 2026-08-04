@@ -11,9 +11,11 @@ A concept that slips by today becomes a blocker three weeks from now, when they 
 
 ## Who the reader is
 
-Read `profile.md` at the vault root before writing anything. It declares their profession, what they already know, what is not their territory, the analogy repertoire that works for them, and the language for notes.
+Write for someone who has never worked in technology and needs this to get their own work done. **That baseline never moves.**
 
-If `profile.md` does not exist, assume the default: **someone who reads code and follows logic, but for whom infrastructure vocabulary, architecture patterns and the library ecosystem are unfamiliar.** Write in the language they use in conversation.
+`profile.md` at the vault root refines it, and you read it before writing anything. It says what they already know so you stop explaining it, what is not their territory, which everyday analogies land best, and the language for notes.
+
+If `profile.md` is missing, or still full of `{{placeholders}}`, the note must come out exactly as clear. Only the analogy becomes more general. An empty profile is never a reason for a harder note.
 
 ## Where the vault lives
 
@@ -46,7 +48,7 @@ Fire on demand too, whenever they ask what something is.
 
 2. **Check the vault.** For each concept, look for `concepts/<slug>.md`. The slug is kebab-case with no accents, in the same language as the note, so a Portuguese vault holds `variavel-de-ambiente.md` and an English one holds `environment-variable.md`.
 
-3. **If it does not exist, create it** using `assets/note-template.md`.
+3. **If it does not exist, draft it** using `assets/note-template.md`, then run the critique pass below before saving.
 
 4. **If it already exists, NEVER overwrite it.** Read the note, add one new line under "Where it is", and stop there. The "My notes" section belongs to them: preserve it byte for byte, even if empty, even if it contains something that looks wrong.
 
@@ -82,15 +84,25 @@ The rule that governs everything else: **the reader must finish able to do the t
 
 Bad explanation is worse than none, because they will reread it in a month and still be lost. Bad teaching writing fails in a particular way: it produces the sensation of having understood, and the person only discovers otherwise when they try to use it.
 
-### Concrete case before the concept
+### Open with the plain sentence
 
-Open with the actual problem from their project, then define the term. The reverse order is comfortable for someone who already knows and useless for someone who does not.
+The first sentence of "What it is" says the simplest true thing, in fewer than fifteen words, with no second clause. "A vault is a folder." Then stop. Build the rest after it.
+
+Detail arriving in the same breath as the definition buries the definition. If your first sentence carries a comma and a "which", it is not the plain sentence yet.
+
+### One new term at a time
+
+Count the technical terms in each paragraph that the reader has not met yet. The budget is one.
+
+If a second is needed, split the paragraph, or give that term its own note and a `[[wikilink]]`. Words that look ordinary and still count: index, database, repository, dependency, environment, instance, render, build.
 
 ### The four rules of definition
 
 **Cascading jargon.** If the definition of a concept uses another technical term, you have two options and no third. Either explain that term right there in parentheses, or create its note too and link it with a `[[wikilink]]`. Never leave an unexplained term inside an explanation.
 
-**Concrete analogy.** Every note carries one analogy, drawn from the repertoire declared in `profile.md`. Four constraints on it:
+**Concrete analogy.** One per note, drawn from ordinary life that anyone has lived: drawers and folders, a queue at a counter, a recipe, post-its on a wall, sending a letter, a shopping list, setting a table.
+
+Never build the analogy out of software, tooling or a developer's workflow, even when the concept itself is about software. "It is like opening a project in your editor" asks the reader to already understand the thing being explained. Four further constraints:
 
 - It comes from what the reader already commands. An analogy that needs explaining has become a second subject to learn.
 - One per concept. Stacked analogies make the reader spend attention comparing the comparisons.
@@ -101,9 +113,13 @@ Open with the actual problem from their project, then define the term. The rever
 
 **Local why.** They need to know why this concept exists in THEIR project, not the textbook definition. "It is used for X" is weak. "It is here because without it the page would reload on every keystroke" is strong.
 
+### Open the note with a scene, not a rationale
+
+"The problem it solved here" is a moment that happened, told in the second person: what they were doing, what went wrong or would have gone wrong. A list of design requirements is not a scene, and three requirements in one sentence is the most common version of this failure.
+
 ### At the hardest point, a worked example rather than an image
 
-At the peak of difficulty the reader needs to see the thing happening step by step, with real code or real numbers. Reaching for a figure of speech exactly where they most need solid ground is the classic failure.
+At the peak of difficulty the reader needs to see the thing happening step by step, with real code or real numbers from their own project. Reaching for a figure of speech exactly where they most need solid ground is the classic failure.
 
 ### Name the common error
 
@@ -113,9 +129,13 @@ Saying where people get this wrong is worth more than one more explanation of th
 
 Close the note with something that requires the reader to produce, not to recognise. A question answered with "yes" verifies nothing. Put the answer in a collapsed block so they can check themselves afterwards.
 
+### Cut what only you find interesting
+
+System paths they will never open, internals that do not change what they can do, background that shows off. Every line earns its place by helping them act. A list of six locations where two matter is five lines of noise and one of signal.
+
 ### Cognitive load
 
-If a paragraph asks the reader to hold four things at once, it becomes a table, a list, or two paragraphs.
+If a paragraph asks the reader to hold three things at once, it becomes a table, a list, or two paragraphs.
 
 ### Language filter
 
@@ -128,13 +148,36 @@ Avoid these four, which show up in teaching writing more than anywhere else:
 
 Also banned: em dashes, staccato of the "Not X. Y." kind, and more than two lines written for effect in a single note.
 
+## The critique pass, before you save
+
+Never write the file straight from the draft. This is the step that separates a correct note from a useful one, and it is the one that gets skipped.
+
+Reread the draft as the learner rather than the author, and check four channels:
+
+| Channel | Question | Typical failure |
+|---|---|---|
+| Comprehension | Can it be followed without rereading? | A hidden step, a leap, a term used before it was defined |
+| Retention | Will it stick once the file is closed? | Facts with no structure and nothing to do |
+| Transfer | Could they apply it to a case you did not show? | Only the canonical example, which teaches the example |
+| Flow | Does the reading carry to the end? | Constant density, no breathing room, no example |
+
+Then run three mechanical checks on the draft:
+
+1. Read the first sentence of "What it is" alone. Does it stand by itself and stay under fifteen words?
+2. Underline every technical term. Is any paragraph carrying more than one that is new to the reader?
+3. Delete the analogy and reread. If nothing is lost, the analogy was decoration and needs replacing.
+
+Fix what the pass finds, then save. A pass that finds nothing means it was read as the author.
+
 ## Note format
 
 Follow `assets/note-template.md`.
 
 **Frontmatter keys stay in English** in every vault, whatever the note language, so that graph filters and search work the same everywhere: `type`, `created`, `projects`, `confidence`.
 
-**Prose and section headings go in the reader's language**, taken from `profile.md`. Translate the headings, and once a vault has notes, match the headings already in use there so the vault stays consistent.
+**Prose and section headings go in the reader's language**, taken from `profile.md`, defaulting to the language they write to you in. Keep the technical term itself in its original form, because that is what appears on the buttons they click and what they would type into a search. Explain in their language, name in the original.
+
+Once a vault has notes, match the headings already in use there so the vault stays consistent.
 
 Wikilinks are what draw the web in Obsidian. Link generously: parent concept, sibling concepts, the project where it showed up. A link to a note that does not exist yet is good rather than broken: it marks the next concept to document.
 
@@ -145,20 +188,22 @@ Wikilinks are what draw the web in Obsidian. Link generously: parent concept, si
 Note created at `concepts/debounce.md`:
 
 > ## The problem it solved here
-> The search field was firing one database query per keystroke. Typing "candle" produced 6 queries instead of 1.
+> You typed "candle" into the search box and the page crawled. Every single letter had sent its own question to the database, so six letters meant six questions where one would have done.
 >
 > ## What it is
-> A way to hold a function back and only run it once the person has stopped acting for a moment. If they type again before the deadline, the clock restarts.
+> A debounce is a wait.
+>
+> It holds an action back until the person has stopped for a moment. Type again before the wait is over and the clock starts from zero.
 >
 > ## Analogy
-> The lift that waits a few seconds before closing its doors. Each new person stepping in restarts the count.
+> The lift that keeps its doors open a few seconds before closing. Every new person stepping in restarts the count.
 >
-> **Where the analogy breaks:** a lift eventually closes no matter what. A debounce can wait forever if the typing never stops.
+> **Where the analogy breaks:** the lift closes eventually no matter what. A debounce waits forever if the typing never stops.
 >
 > ## Test yourself
-> The delay is 300ms. Someone types 5 letters, one every 200ms. How many queries reach the database?
+> The wait is set to 300ms. Someone types 5 letters, one every 200ms. How many questions reach the database?
 >
-> <details><summary>answer</summary>One. Each keystroke restarts the clock, and 200ms is shorter than 300ms, so only the pause after the last letter completes.</details>
+> <details><summary>answer</summary>One. Each letter restarts the clock, and 200ms is shorter than 300ms, so only the pause after the last letter is long enough to finish.</details>
 
 **Chat summary:**
 
@@ -168,5 +213,5 @@ Note created at `concepts/debounce.md`:
 
 - Do not ask "want me to document this?" first. Document, then say so.
 - Do not create a note for a concept already in the vault just because your definition is simpler than the one there.
-- Do not write in the register of official documentation. Write as someone explaining to a smart colleague from another field.
+- Do not write in the register of official documentation. Write as someone explaining to a smart colleague who has never worked in technology.
 - Do not touch "My notes", with the single exception of review mode, where you transcribe their words.
