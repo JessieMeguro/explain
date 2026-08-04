@@ -3,10 +3,10 @@ set -euo pipefail
 
 # Installer for the explain-it-to-me skill.
 # Two ways to run it:
-#   curl -fsSL https://raw.githubusercontent.com/JessieMeguro/obsidian/main/install.sh | bash
+#   curl -fsSL https://raw.githubusercontent.com/JessieMeguro/explain/main/install.sh | bash
 #   ./install.sh   (from inside a clone of the repository)
 
-REPO_URL="https://github.com/JessieMeguro/obsidian.git"
+REPO_URL="https://github.com/JessieMeguro/explain.git"
 SKILL_NAME="explain-it-to-me"
 VAULT_PATH="${VAULT_PATH:-$HOME/tech-vault}"
 

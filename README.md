@@ -32,14 +32,14 @@ You need a coding agent (Cursor or Claude Code), `git`, and [Obsidian](https://o
 ## Install
 
 ```bash
-curl -fsSL https://raw.githubusercontent.com/JessieMeguro/obsidian/main/install.sh | bash
+curl -fsSL https://raw.githubusercontent.com/JessieMeguro/explain/main/install.sh | bash
 ```
 
 Or clone first, if you would rather read the script before running it:
 
 ```bash
-git clone https://github.com/JessieMeguro/obsidian.git
-cd obsidian && ./install.sh
+git clone https://github.com/JessieMeguro/explain.git
+cd explain && ./install.sh
 ```
 
 The installer creates a vault at `~/tech-vault/` and copies the skill into `~/.cursor/skills/` and `~/.claude/skills/`. Running it again is safe and is how you update: your notes and your `profile.md` are never overwritten.
