@@ -1,89 +1,106 @@
 # explica-pra-mim
 
-Uma skill para quem constrói com AI e não quer terminar a sessão com código funcionando que não sabe manter.
+A skill that makes your coding agent explain what it just built, and file the explanation in an Obsidian vault you can grow.
 
-Cada vez que o agente gera código, escolhe uma biblioteca ou aplica um padrão, ele grava uma nota explicando **o que é**, **por que apareceu no seu projeto** e **o que cuidar se você mexer**. As notas ficam num vault do Obsidian, ligadas por wikilinks. Com o tempo isso deixa de ser um arquivo de notas e vira um caderno vivo do que você já entendeu.
+## The problem this solves
 
-## Para quem é
+You ask an agent for a feature. It works. Three weeks later you open the file and find a `useMemo`, a database migration and an environment variable you have never seen before. Nothing is broken, so nothing warned you. You cannot safely change any of it, so you ask the agent again, and the gap between what you own and what you understand gets a little wider.
 
-Pessoas que leem código e entendem lógica, mas para quem o vocabulário de infraestrutura, padrões de arquitetura e ecossistema de bibliotecas ainda não é familiar. Designers, gerentes de produto, gente migrando de área, quem está aprendendo.
+That gap is the target here. Not the code, which was fine.
 
-O problema que isso resolve não é escrever código. É que o conceito que passa despercebido hoje vira um bloqueio daqui a três semanas.
+## What it does
 
-## Instalação
+At the end of every delivery, the agent writes one note per new concept into a local vault. Each note answers four things:
+
+| Section | What it holds |
+|---|---|
+| The problem it solved here | The concrete thing that was breaking in *your* project |
+| What it is | Two or three sentences, no unexplained jargon |
+| Analogy | One comparison drawn from a repertoire you define, plus where that comparison stops working |
+| If I need to change it | The main risk, the common mistake, and what is safe to adjust |
+
+Notes link to each other with `[[wikilinks]]`, so Obsidian draws the connections for you. Every note also ends with a question you have to answer, and a section the AI is forbidden from writing in.
+
+## Who it is for
+
+People who read code and follow logic, but for whom infrastructure vocabulary, architecture patterns and library names are still unfamiliar territory. Designers, product managers, people switching fields, anyone learning by building.
+
+## Before you install
+
+You need a coding agent (Cursor or Claude Code), `git`, and [Obsidian](https://obsidian.md), which is free and keeps everything on your machine.
+
+## Install
 
 ```bash
 curl -fsSL https://raw.githubusercontent.com/JessieMeguro/obsidian/main/install.sh | bash
 ```
 
-Ou clonando, se preferir ler antes de rodar:
+Or clone first, if you would rather read the script before running it:
 
 ```bash
 git clone https://github.com/JessieMeguro/obsidian.git
 cd obsidian && ./install.sh
 ```
 
-O instalador cria o vault em `~/vault-tecnico/` e copia a skill para `~/.cursor/skills/` e `~/.claude/skills/`. É seguro rodar de novo para atualizar: `perfil.md` e suas notas nunca são sobrescritos.
+The installer creates a vault at `~/vault-tecnico/` and copies the skill into `~/.cursor/skills/` and `~/.claude/skills/`. Running it again is safe and is how you update: your notes and your `perfil.md` are never overwritten.
 
-Para usar outro caminho de vault: `VAULT_PATH=~/meu-vault ./install.sh`.
+For a different vault location, set `VAULT_PATH=~/my-vault ./install.sh`.
 
-Depois de instalar, **reinicie o Cursor** e edite `~/vault-tecnico/perfil.md`.
+Two things to do afterwards: restart your agent so it loads the skill, and fill in `~/vault-tecnico/perfil.md`.
 
-## O perfil
+## The profile is not optional
 
-`perfil.md` é o que faz a diferença entre uma nota genérica e uma que você entende. Nele você declara sua profissão, o que já domina (e a skill não precisa explicar), o que não é seu território, e o repertório de analogias que funciona com você — design, cozinha, e-commerce, dinâmica de time.
+`perfil.md` is the difference between a note you understand and a note that reads like a manual. In it you declare your profession, what you already know (so the skill stops explaining it), what is not your territory, and the worlds your analogies should come from: design handoffs, team dynamics, cooking, shop windows, whatever actually works on you.
 
-Ele mora no vault e não na pasta da skill, justamente para sobreviver a qualquer atualização.
+It lives in the vault rather than in the skill folder, which is what lets it survive every update.
 
-## Como usar
+## Using it
 
-A skill dispara sozinha ao fim de cada entrega. Você não precisa pedir.
+The skill fires on its own after each delivery. You do not have to ask.
 
-| Comando | O que faz |
+| Command | What happens |
 |---|---|
-| `/explica <termo>` | Documenta só aquele conceito |
-| código selecionado + a skill | Documenta o conceito central do trecho |
-| `/revisar` | Puxa as notas não revisadas e te faz a pergunta de volta |
+| `/explica <term>` | Documents that one concept and nothing else |
+| Select code, then invoke the skill | Documents the central concept in the selection |
+| `/revisar` | Asks you what a concept is, without showing you the note |
 
-## O vault
+## The vault
 
 ```
 vault-tecnico/
-├── perfil.md          quem você é
-├── indice.md          mapa geral por tema
-├── conceitos/         uma nota por conceito
-└── projetos/          uma nota por projeto
+├── perfil.md          who you are
+├── indice.md          general map, by theme
+├── conceitos/         one note per concept
+└── projetos/          one note per project
 ```
 
-Um vault único, fora dos projetos. É o que faz o conceito aprendido num projeto reaparecer linkado quando surgir em outro.
+One vault, kept outside your projects. That is what makes a concept you learned in one project show up already linked when it appears in the next one.
 
-Cada nota tem `confianca: nao-revisado` no frontmatter até você revisar, e uma seção **Minhas notas** que a AI não escreve. Esse espaço é seu.
+Frontmatter keys are always English (`type`, `created`, `projects`, `confidence`) so search and graph filters behave the same in any vault. The prose is written in whatever language you set in your profile.
 
-## Ligar o Obsidian
+## Setting up the graph
 
-1. Baixe o [Obsidian](https://obsidian.md) (gratuito, tudo local).
-2. "Open folder as vault" e aponte para `~/vault-tecnico/`.
-3. Abra a visão de grafo no ícone da lateral esquerda.
+Open Obsidian, choose "Open folder as vault", point it at `~/vault-tecnico/`, and open the graph from the left sidebar. Three settings pay for themselves:
 
-Os `[[wikilinks]]` que a skill escreve viram as linhas da teia sozinhos.
+- **Show orphans** reveals concepts that ended up with no connections, which usually means the note was written poorly.
+- Turning **Existing files only** off shows pending links, the concepts the skill mentioned but has not documented yet. That is your reading queue.
+- Under **Groups**, add a filter for `confidence:not-reviewed` in a strong colour, so the graph shows you at a glance what you have not sat with yet.
 
-Ajustes que valem a pena no grafo:
+If you would rather not leave your editor, the **Foam** extension renders graphs and wikilinks inside Cursor from the same folder.
 
-- Ative **Show orphans** para achar conceitos que ficaram soltos, sem conexão. Costuma ser sinal de nota mal escrita.
-- Desligue **Existing files only** para ver os links pendentes, ou seja, os conceitos que a skill mencionou mas ainda não documentou. É sua fila de estudo.
-- Em **Groups**, crie um filtro `confianca:nao-revisado` numa cor forte. Assim o grafo mostra visualmente o que você ainda não leu com calma.
+## The weekly ritual
 
-Alternativa sem sair do editor: a extensão **Foam** faz grafo e wikilinks dentro do próprio Cursor, lendo a mesma pasta.
+Capture is the part the skill handles. Recall is the part it cannot do for you.
 
-## O ritual que faz isso funcionar
+Once a week, run `/revisar`. It picks the notes you have not reviewed, asks what one of them means without showing you the answer, and only marks it reviewed once you have written your version under "My notes". Rewriting a concept in your own words is what moves it into your head. Rereading the AI's paragraph does not.
 
-A skill resolve a captura. O que ela não resolve sozinha é a revisão.
+## Where people get this wrong
 
-Uma vez por semana, rode `/revisar`. Ela vai te perguntar o que um conceito é, sem mostrar a nota, e só marca como revisado depois que você responder com suas palavras.
+- **Treating the vault as documentation.** It is a study tool. Notes you never answer back to are an archive, not knowledge.
+- **Leaving `perfil.md` empty** and then wondering why the analogies feel generic. The skill falls back to a sensible default, and a default is all it can be.
+- **Skipping the review.** This is the failure that matters. A vault of 200 unreviewed notes feels like progress and teaches you nothing.
 
-O ato de reescrever com as próprias palavras é o que transfere o conceito. Ler a nota da AI de novo não transfere nada.
-
-## Estrutura deste repositório
+## What is in this repository
 
 ```
 ├── install.sh
@@ -96,4 +113,4 @@ O ato de reescrever com as próprias palavras é o que transfere o conceito. Ler
     └── indice.md
 ```
 
-Este repositório guarda só a skill. Seu vault de notas é local e não passa por aqui.
+Only the skill lives here. Your vault, your profile and your notes stay on your machine and never pass through this repository.

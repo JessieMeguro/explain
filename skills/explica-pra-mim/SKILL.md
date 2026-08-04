@@ -1,131 +1,172 @@
 ---
 name: explica-pra-mim
-description: Documenta e explica todo conceito técnico novo que aparecer no trabalho, gravando notas markdown interligadas num vault pessoal do Obsidian. Use SEMPRE que gerar ou modificar código, escolher uma biblioteca, aplicar um padrão de arquitetura, ou usar qualquer termo técnico sem nota no vault. Use também quando a pessoa disser "não entendi", "o que é isso", "me explica", "por que você fez assim", ou quando pedir para revisar algo que ela mesma gerou antes. Na dúvida sobre se vale documentar, documente.
+description: Documents and explains every new technical concept that comes up while working, writing linked markdown notes into a personal Obsidian vault. Use ALWAYS after generating or changing code, choosing a library, applying an architecture pattern, or using any technical term that has no note in the vault yet. Also use when the person says "I don't get it", "what is this", "explain this to me", "why did you do it this way", or the equivalent in their own language ("não entendi", "o que é isso", "me explica", "por que você fez assim"). When unsure whether something is worth documenting, document it.
 ---
 
 # Explica pra mim
 
-O objetivo desta skill é simples: a pessoa não deve terminar uma sessão de trabalho com código funcionando que ela não sabe manter.
+The goal is narrow: the person must not end a working session with code they cannot maintain.
 
-Cada conceito que passa despercebido hoje vira um bloqueio daqui a três semanas, quando ela precisar mexer sozinha no que foi criado. Documentar é o que transforma "a AI fez" em "eu sei o que tenho".
+A concept that slips by today becomes a blocker three weeks from now, when they need to change that code alone. Documenting is what turns "the AI did it" into "I know what I have".
 
-## Quem é a pessoa
+## Who the reader is
 
-Leia `perfil.md` na raiz do vault antes de escrever qualquer nota. Ele declara a profissão dela, o que ela já domina, o que não é o território dela, e o repertório de analogias que funciona.
+Read `perfil.md` at the vault root before writing anything. It declares their profession, what they already know, what is not their territory, the analogy repertoire that works for them, and the language for notes.
 
-Se `perfil.md` não existir, assuma o padrão: **alguém que lê código e entende lógica, mas para quem o vocabulário de infraestrutura, padrões de arquitetura e ecossistema de bibliotecas não é familiar.** Use analogias do cotidiano e de processos de trabalho.
+If `perfil.md` does not exist, assume the default: **someone who reads code and follows logic, but for whom infrastructure vocabulary, architecture patterns and the library ecosystem are unfamiliar.** Write in the language they use in conversation.
 
-## Onde fica o vault
+## Where the vault lives
 
-Leia `VAULT_PATH` do arquivo `.env` do projeto, ou use `~/vault-tecnico/` como padrão.
-
-Estrutura:
+Read `VAULT_PATH` from the project `.env`, or use `~/vault-tecnico/`.
 
 ```
 vault-tecnico/
-├── perfil.md          (quem é a pessoa, lido antes de escrever)
-├── indice.md          (mapa geral, atualizado a cada nota nova)
-├── conceitos/         (uma nota por conceito)
-└── projetos/          (uma nota por projeto, listando o que ele usa)
+├── perfil.md          who the reader is, read before writing
+├── indice.md          general map, updated with every new note
+├── conceitos/         one note per concept
+└── projetos/          one note per project, listing what it uses
 ```
 
-Se a pasta não existir, crie e avise no chat.
+If the folder does not exist, create it and say so in the chat.
 
-## Quando disparar
+## When to fire
 
-Dispare ao final de qualquer entrega, sem esperar ser perguntada:
+Fire at the end of any delivery, without being asked:
 
-- Código gerado ou alterado que introduz conceito, padrão, biblioteca ou comando novo
-- Erro que você resolveu (a causa vira nota, não só a correção)
-- Decisão de arquitetura, mesmo pequena
-- Termo técnico que você usou no chat e não explicou na hora
+- Code generated or changed that introduces a new concept, pattern, library or command
+- An error you fixed (the cause becomes a note, not just the fix)
+- An architecture decision, however small
+- A technical term you used in the chat and did not explain at the time
 
-Dispare também sob demanda, quando ela perguntar o que algo é.
+Fire on demand too, whenever they ask what something is.
 
-## O fluxo
+## The flow
 
-1. **Liste os conceitos** que apareceram. Seja generosa: `useEffect`, `debounce`, `variável de ambiente`, `índice composto`, `server component`, `migration` são todos candidatos válidos. Ignore só o que for trivial de verdade (`if`, `for`, nome de variável).
+1. **List the concepts** that came up. Be generous: `useEffect`, `debounce`, `environment variable`, `composite index`, `server component`, `migration` are all valid candidates. Skip only what is genuinely trivial (`if`, `for`, a variable name).
 
-2. **Cheque o vault.** Para cada conceito, procure `conceitos/<slug>.md`. O slug é kebab-case sem acento: `variavel-de-ambiente.md`, `server-component.md`.
+2. **Check the vault.** For each concept, look for `conceitos/<slug>.md`. The slug is kebab-case with no accents: `variavel-de-ambiente.md`, `server-component.md`.
 
-3. **Se não existe, crie** usando o template em `assets/template-nota.md`.
+3. **If it does not exist, create it** using `assets/template-nota.md`.
 
-4. **Se já existe, NUNCA sobrescreva.** Leia a nota, adicione uma linha nova em "Onde está" e pare por aí. A seção "Minhas notas" é território dela: preserve byte a byte, mesmo que esteja vazia, mesmo que tenha algo que pareça errado.
+4. **If it already exists, NEVER overwrite it.** Read the note, add one new line under "Where it is", and stop there. The "My notes" section belongs to them: preserve it byte for byte, even if empty, even if it contains something that looks wrong.
 
-5. **Atualize `indice.md`** com o conceito novo, agrupado por tema.
+5. **Update `indice.md`** with the new concept, grouped by theme.
 
-6. **Atualize a nota do projeto** em `projetos/<nome>.md`, listando os conceitos que ele usa.
+6. **Update the project note** in `projetos/<name>.md`, listing the concepts it uses.
 
-7. **Resuma no chat**, em no máximo 5 linhas: o que foi construído, quais notas você criou, e a única coisa que ela precisa saber para mexer nisso sozinha depois.
+7. **Summarise in the chat**, in 5 lines or fewer: what was built, which notes you created, and the one thing they need to know to change it alone later.
 
-## Modo seleção
+## Selection mode
 
-Quando ela pedir explicitamente por um termo, com `/explica <termo>` ou com um trecho de código selecionado no editor, documente **apenas aquilo**. Não varra o projeto inteiro, não crie notas de contexto que ela não pediu.
+When they ask for a specific term, with `/explica <term>` or with a snippet selected in the editor, document **only that**. Do not sweep the project, do not create context notes they did not ask for.
 
-- **Termo nomeado:** siga o fluxo normal para esse único conceito.
-- **Código selecionado sem termo:** identifique o conceito central do trecho, diga qual você escolheu, e documente esse. Se houver mais de um candidato forte, pergunte antes de escrever.
-- **Nota já existe:** não recrie. Mostre o conteúdo dela no chat e pergunte o que ficou faltando. A resposta dela vira acréscimo, e o acréscimo vai em "Minhas notas" com as palavras dela, não com as suas.
+- **Named term:** follow the normal flow for that single concept.
+- **Selected code with no term:** identify the central concept in the snippet, say which one you picked, and document it. If more than one strong candidate exists, ask before writing.
+- **Note already exists:** do not recreate it. Show its content in the chat and ask what is missing. Their answer becomes an addition, and the addition goes under "My notes" in their words, not yours.
 
-## Modo revisão
+## Review mode
 
-Quando ela pedir `/revisar`, o objetivo não é você explicar de novo. É ela recuperar o conceito de memória, porque reler a nota da AI não transfere nada e reescrever com as próprias palavras transfere.
+When they ask for `/revisar`, the point is not for you to explain again. It is for them to recall the concept from memory, because rereading the AI's note transfers nothing and rewriting it in their own words does.
 
-1. Liste as notas de `conceitos/` com `confianca: nao-revisado` no frontmatter. Se houver muitas, pegue as 3 mais antigas.
-2. Para cada uma, faça **uma** pergunta aberta e não mostre a nota: "o que é `debounce`, com suas palavras?"
-3. Espere a resposta dela. Só então mostre a nota e aponte a diferença entre as duas versões, se houver.
-4. Escreva a resposta **dela** em "Minhas notas" — é a única circunstância em que você toca nessa seção, e ainda assim usando as palavras dela, não uma reescrita sua.
-5. Mude `confianca` para `revisado` no frontmatter.
+1. List the notes in `conceitos/` with `confidence: not-reviewed` in the frontmatter. If there are many, take the 3 oldest.
+2. For each one, ask **one** open question and do not show the note: "what is `debounce`, in your own words?"
+3. Wait for their answer. Only then show the note and point out the gap between the two versions, if there is one.
+4. Write **their** answer under "My notes". This is the only circumstance in which you touch that section, and even here you use their words, not a rewrite of them.
+5. Change `confidence` to `reviewed` in the frontmatter.
 
-Se ela não souber responder, não marque como revisado. Explique de outro ângulo, com uma analogia diferente da que está na nota, e deixe para a próxima rodada.
+If they cannot answer, do not mark it reviewed. Explain from a different angle, with an analogy other than the one in the note, and leave it for the next round.
 
-## Como escrever a definição
+## How to write the note
 
-Esta é a parte que faz a skill valer alguma coisa. Uma definição ruim é pior que nenhuma, porque ela vai reler daqui a um mês e continuar perdida.
+The rule that governs everything else: **the reader must finish able to do the thing, not impressed.**
 
-**Regra do jargão em cascata:** se a definição de um conceito usa outro termo técnico, você tem duas opções e nenhuma terceira. Ou explica o termo ali mesmo entre parênteses, ou cria a nota dele também e linka com `[[wikilink]]`. Nunca deixe um termo não explicado dentro de uma explicação.
+Bad explanation is worse than none, because they will reread it in a month and still be lost. Bad teaching writing fails in a particular way: it produces the sensation of having understood, and the person only discovers otherwise when they try to use it.
 
-**Regra da analogia concreta:** toda nota tem uma analogia com algo do repertório declarado em `perfil.md`. Sem perfil, use cotidiano e processos de trabalho: cozinha, organização de arquivos, fila de atendimento, mudança de casa. Nada de "pense em uma fábrica de widgets".
+### Concrete case before the concept
 
-**Regra do tamanho:** a resposta ao "o que é" cabe em duas ou três frases. Se não couber, o conceito está grande demais e deve virar duas notas.
+Open with the actual problem from their project, then define the term. The reverse order is comfortable for someone who already knows and useless for someone who does not.
 
-**Regra do porquê:** ela precisa saber por que esse conceito existe no projeto DELA, não a definição de manual. "Serve para X" é fraco. "Está aqui porque sem isso a página recarregaria a cada tecla digitada" é forte.
+### The four rules of definition
 
-## Formato da nota
+**Cascading jargon.** If the definition of a concept uses another technical term, you have two options and no third. Either explain that term right there in parentheses, or create its note too and link it with a `[[wikilink]]`. Never leave an unexplained term inside an explanation.
 
-Siga exatamente o template em `assets/template-nota.md`. Os campos que mais importam:
+**Concrete analogy.** Every note carries one analogy, drawn from the repertoire declared in `perfil.md`. Four constraints on it:
 
-- `## O que é` em duas ou três frases
-- `## Analogia`
-- `## Por que apareceu aqui` com o problema concreto que resolveu
-- `## Onde está` com caminho de arquivo e linha
-- `## Se eu precisar mexer` com o cuidado principal e o erro mais comum
-- `## Conectado a` com os `[[wikilinks]]`
-- `## Minhas notas` sempre vazia na criação
+- It comes from what the reader already commands. An analogy that needs explaining has become a second subject to learn.
+- One per concept. Stacked analogies make the reader spend attention comparing the comparisons.
+- Cut test: delete the analogy. If the explanation is still complete, the analogy was decoration.
+- Say where it breaks. Every analogy has a limit and the reader will hit it alone. Naming the limit stops them from generalising wrongly.
 
-Os wikilinks são o que desenha a teia no Obsidian. Linke com generosidade: conceito pai, conceitos irmãos, o projeto onde apareceu. Um link para uma nota que ainda não existe é bom, não é erro: ele marca o próximo conceito a documentar.
+**Size.** The answer to "what is it" fits in two or three sentences. If it does not fit, the concept is too big and should become two notes.
 
-## Exemplo
+**Local why.** They need to know why this concept exists in THEIR project, not the textbook definition. "It is used for X" is weak. "It is here because without it the page would reload on every keystroke" is strong.
 
-**Contexto:** você acabou de adicionar um `debounce` num campo de busca.
+### At the hardest point, a worked example rather than an image
 
-**Nota criada** em `conceitos/debounce.md`:
+At the peak of difficulty the reader needs to see the thing happening step by step, with real code or real numbers. Reaching for a figure of speech exactly where they most need solid ground is the classic failure.
 
-> ## O que é
-> Uma técnica para segurar uma função e só executar depois que a pessoa parar de agir por um tempinho. Se ela digitar de novo antes do prazo, o relógio zera.
+### Name the common error
+
+Saying where people get this wrong is worth more than one more explanation of the right way, because it hands the reader a way to check themselves.
+
+### Active verification
+
+Close the note with something that requires the reader to produce, not to recognise. A question answered with "yes" verifies nothing. Put the answer in a collapsed block so they can check themselves afterwards.
+
+### Cognitive load
+
+If a paragraph asks the reader to hold four things at once, it becomes a table, a list, or two paragraphs.
+
+### Language filter
+
+Avoid these four, which show up in teaching writing more than anywhere else:
+
+- **Pointing at the insight.** "Note that", "notice how", "observe that", "this is exactly why". If the next sentence is the insight, it stands on its own.
+- **Serial contrast.** "It is not about memorising, it is about understanding." One per note at most, then plain statements.
+- **Intelligence pose.** A hard word where a simple one works, decorative triads, dramatic colons. Every opaque word is a reader who stopped reading.
+- **Formulaic text.** If every note has the identical rhythm, it becomes predictable noise and the reader starts skipping blocks.
+
+Also banned: em dashes, staccato of the "Not X. Y." kind, and more than two lines written for effect in a single note.
+
+## Note format
+
+Follow `assets/template-nota.md`.
+
+**Frontmatter keys stay in English** in every vault, whatever the note language, so that graph filters and search work the same everywhere: `type`, `created`, `projects`, `confidence`.
+
+**Prose and section headings go in the reader's language**, taken from `perfil.md`. Translate the headings, and once a vault has notes, match the headings already in use there so the vault stays consistent.
+
+Wikilinks are what draw the web in Obsidian. Link generously: parent concept, sibling concepts, the project where it showed up. A link to a note that does not exist yet is good rather than broken: it marks the next concept to document.
+
+## Example
+
+**Context:** you have just added a `debounce` to a search field.
+
+Note created at `conceitos/debounce.md`:
+
+> ## The problem it solved here
+> The search field was firing one database query per keystroke. Typing "candle" produced 6 queries instead of 1.
 >
-> ## Analogia
-> É o elevador que espera alguns segundos antes de fechar a porta. Cada pessoa nova que entra reinicia a contagem.
+> ## What it is
+> A way to hold a function back and only run it once the person has stopped acting for a moment. If they type again before the deadline, the clock restarts.
 >
-> ## Por que apareceu aqui
-> Sem isso, o campo de busca dispararia uma consulta ao banco a cada tecla. "candle" viraria 6 consultas em vez de 1.
+> ## Analogy
+> The lift that waits a few seconds before closing its doors. Each new person stepping in restarts the count.
+>
+> **Where the analogy breaks:** a lift eventually closes no matter what. A debounce can wait forever if the typing never stops.
+>
+> ## Test yourself
+> The delay is 300ms. Someone types 5 letters, one every 200ms. How many queries reach the database?
+>
+> <details><summary>answer</summary>One. Each keystroke restarts the clock, and 200ms is shorter than 300ms, so only the pause after the last letter completes.</details>
 
-**Resumo no chat:**
+**Chat summary:**
 
-> Adicionei debounce de 300ms na busca (`src/components/Search.tsx`, linha 24). Criei 2 notas: [[debounce]] e [[evento-de-input]]. Se a busca parecer lenta pra responder, o número a mexer é o 300.
+> Added a 300ms debounce to the search (`src/components/Search.tsx`, line 24). Created 2 notes: [[debounce]] and [[input-event]]. If the search ever feels slow to respond, 300 is the number to change.
 
-## O que não fazer
+## What not to do
 
-- Não pergunte "quer que eu documente?" antes. Documente e avise depois.
-- Não crie nota de conceito que já está no vault só porque a definição de lá está mais simples que a sua.
-- Não escreva a nota em tom de documentação oficial. Escreva como quem explica pra uma colega esperta que não é da área.
-- Não toque em "Minhas notas", com a única exceção do modo revisão, onde você transcreve as palavras dela.
+- Do not ask "want me to document this?" first. Document, then say so.
+- Do not create a note for a concept already in the vault just because your definition is simpler than the one there.
+- Do not write in the register of official documentation. Write as someone explaining to a smart colleague from another field.
+- Do not touch "My notes", with the single exception of review mode, where you transcribe their words.

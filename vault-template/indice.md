@@ -1,25 +1,23 @@
-# Índice
+# Index
 
-Mapa geral do vault. A skill `explica-pra-mim` adiciona cada conceito novo aqui, agrupado por tema.
+The general map of this vault. The `explica-pra-mim` skill adds every new concept here, grouped by theme.
 
-## Como usar este arquivo
+This is the way in when you cannot remember the name of what you are looking for. To see the connections instead, open Obsidian's graph view.
 
-Este é o ponto de entrada quando você não lembra o nome do que procura. Para ver as conexões, abra a visão de grafo do Obsidian.
+## Concepts by theme
 
-## Conceitos por tema
+<!-- The skill fills in from here down. Themes appear as the projects demand them. -->
 
-<!-- A skill preenche daqui pra baixo. Os temas vão surgindo conforme os projetos pedem. -->
+### Language and logic
 
-### Linguagem e lógica
+### Interface and components
 
-### Interface e componentes
+### Data and databases
 
-### Dados e banco
+### Infrastructure and deploys
 
-### Infraestrutura e deploy
+### Tools and commands
 
-### Ferramentas e comandos
+## Projects
 
-## Projetos
-
-<!-- Uma linha por projeto, apontando para a nota em projetos/. -->
+<!-- One line per project, pointing at its note in projetos/. -->

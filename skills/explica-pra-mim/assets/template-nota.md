@@ -1,40 +1,57 @@
 ---
-tipo: conceito
-criado: {{DATA}}
-projetos: [{{PROJETO}}]
-confianca: nao-revisado
+type: concept
+created: {{DATE}}
+projects: [{{PROJECT}}]
+confidence: not-reviewed
 ---
 
-# {{TÍTULO HUMANO DO CONCEITO}}
+# {{HUMAN TITLE OF THE CONCEPT}}
 
-## O que é
+<!--
+Frontmatter keys stay in English in every vault.
+Prose and headings go in the reader's language, from perfil.md.
+-->
 
-{{Duas ou três frases. Sem jargão não explicado. Se precisar usar outro termo técnico, explique entre parênteses ou linke com wikilink.}}
+## The problem it solved here
 
-## Analogia
+{{The concrete problem in this project, before any definition. What was breaking, or what would break without this. Not the textbook motivation.}}
 
-{{Uma comparação com algo do repertório declarado em perfil.md. Sem perfil: cotidiano e processos de trabalho.}}
+## What it is
 
-## Por que apareceu aqui
+{{Two or three sentences. No unexplained jargon. If another technical term is needed, explain it in parentheses or link it with a wikilink.}}
 
-{{O problema concreto que isso resolveu neste projeto. Não a definição de manual.}}
+## Analogy
 
-## Onde está
+{{One comparison, drawn from the repertoire in perfil.md. If it needs explaining, it has become a second subject to learn.}}
 
-- `{{caminho/do/arquivo.ext}}` linha {{N}}
-- Projeto: [[{{nome-do-projeto}}]]
+**Where the analogy breaks:** {{the limit the reader would hit on their own}}
 
-## Se eu precisar mexer
+## Where it is
 
-- **O cuidado principal:** {{o que quebra se mexer errado}}
-- **O erro mais comum:** {{o tropeço clássico de quem está começando com isso}}
-- **O número ou trecho que dá pra ajustar sem medo:** {{se houver}}
+- `{{path/to/file.ext}}` line {{N}}
+- Project: [[{{project-name}}]]
 
-## Conectado a
+## If I need to change it
 
-- [[{{conceito-pai}}]]
-- [[{{conceito-irmao}}]]
+- **Main risk:** {{what breaks if this is changed carelessly}}
+- **Most common mistake:** {{the classic stumble for someone new to this}}
+- **Safe to adjust:** {{the number or snippet they can change without fear, if any}}
 
-## Minhas notas
+## Test yourself
 
-<!-- Espaço seu. A AI nunca escreve aqui, exceto para transcrever suas palavras no /revisar. -->
+{{One question that requires producing an answer, not recognising one. Yes/no questions verify nothing.}}
+
+<details><summary>answer</summary>
+
+{{The answer, so they can check themselves after trying.}}
+
+</details>
+
+## Connected to
+
+- [[{{parent-concept}}]]
+- [[{{sibling-concept}}]]
+
+## My notes
+
+<!-- Their space. The AI never writes here, except to transcribe their own words during /revisar. -->
