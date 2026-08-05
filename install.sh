@@ -3,12 +3,22 @@ set -euo pipefail
 
 # Installer for the explain-it-to-me skill.
 # Two ways to run it:
-#   curl -fsSL https://raw.githubusercontent.com/JessieMeguro/explain/main/install.sh | bash
+#   curl -fsSL https://raw.githubusercontent.com/JessieMeguro/explain/v1.1.0/install.sh | bash
 #   ./install.sh   (from inside a clone of the repository)
+#
+# The remote path is pinned to a tag, not a branch, so a future push to the
+# repository cannot change what this exact command downloads and runs.
+# To use a different pinned version, set EXPLAIN_REF and change the URL/tag
+# together; do not point at "main".
 
 REPO_URL="https://github.com/JessieMeguro/explain.git"
+REF="${EXPLAIN_REF:-v1.1.0}"
 SKILL_NAME="explain-it-to-me"
 VAULT_PATH="${VAULT_PATH:-$HOME/tech-vault}"
+
+# New files created by this installer (vault, profile, skill copies) are
+# personal to this machine, so keep them private to the current user.
+umask 077
 
 info()  { printf '  %s\n' "$1"; }
 ok()    { printf '  ok    %s\n' "$1"; }
@@ -31,8 +41,8 @@ else
   command -v git >/dev/null 2>&1 || fail "git not found. Install git, or clone the repository by hand."
   TMP_DIR="$(mktemp -d)"
   trap 'rm -rf "$TMP_DIR"' EXIT
-  info "downloading the repository"
-  git clone --depth 1 --quiet "$REPO_URL" "$TMP_DIR/repo" || fail "could not clone $REPO_URL"
+  info "downloading $REF"
+  git clone --depth 1 --branch "$REF" --quiet "$REPO_URL" "$TMP_DIR/repo" || fail "could not clone $REPO_URL at $REF"
   REPO_DIR="$TMP_DIR/repo"
 fi
 
@@ -67,8 +77,11 @@ printf '\nskill\n'
 
 for target in "$HOME/.cursor/skills" "$HOME/.claude/skills"; do
   mkdir -p "$target"
+  staging="$target/.$SKILL_NAME.new.$$"
+  rm -rf "$staging"
+  cp -R "$SKILL_SRC" "$staging"
   rm -rf "$target/$SKILL_NAME"
-  cp -R "$SKILL_SRC" "$target/$SKILL_NAME"
+  mv "$staging" "$target/$SKILL_NAME"
   ok "$target/$SKILL_NAME"
 done
 

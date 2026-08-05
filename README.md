@@ -31,17 +31,19 @@ You need a coding agent (Cursor or Claude Code), `git`, and [Obsidian](https://o
 ## Install
 
 ```bash
-curl -fsSL https://raw.githubusercontent.com/JessieMeguro/explain/main/install.sh | bash
+curl -fsSL https://raw.githubusercontent.com/JessieMeguro/explain/v1.1.0/install.sh | bash
 ```
+
+The URL is pinned to a tagged release, `v1.1.0`, rather than to a branch. A future push to this repository cannot change what that exact command downloads and runs. Upgrading means deliberately switching to a newer tag once one exists.
 
 Or clone first, if you would rather read the script before running it:
 
 ```bash
-git clone https://github.com/JessieMeguro/explain.git
+git clone --branch v1.1.0 https://github.com/JessieMeguro/explain.git
 cd explain && ./install.sh
 ```
 
-The installer creates a vault at `~/tech-vault/` and copies the skill into `~/.cursor/skills/` and `~/.claude/skills/`. Running it again is safe and is how you update: your notes and your `profile.md` are never overwritten.
+The installer creates a vault at `~/tech-vault/` and copies the skill into `~/.cursor/skills/` and `~/.claude/skills/`. Running it again is safe and is how you update: your notes and your `profile.md` are never overwritten. The skill copy itself is replaced only after the new copy has been fully written, so an interrupted update cannot leave you with half a skill.
 
 For a different vault location, set `VAULT_PATH=~/my-vault ./install.sh`.
 
@@ -79,11 +81,15 @@ One vault, kept outside your projects. A concept documented for one project rema
 
 Frontmatter keys are always English (`type`, `created`, `projects`, `confidence`) so search and graph filters behave the same in any vault. The prose is written in whatever language you set in your profile, and note filenames follow that language too.
 
-## Privacy
+## Privacy and security
 
 The repository contains templates only. The installer creates the vault under your home directory, outside the cloned repository.
 
-Your `profile.md`, concept notes, project notes, and Obsidian settings remain on your machine. The installer does not upload them and never overwrites an existing profile, index, or note. The included `.gitignore` also blocks common vault paths if personal files are accidentally created inside a clone.
+Your `profile.md`, concept notes, project notes, and Obsidian settings remain on your machine. The installer does not upload them and never overwrites an existing profile, index, or note. The included `.gitignore` also blocks common vault paths if personal files are accidentally created inside a clone. New files the installer creates are set to be readable only by your user account (`umask 077`).
+
+That protection stops at this repository's clone. If you turn `~/tech-vault/` itself into a Git repository, an iCloud/Dropbox folder, or an Obsidian Sync vault, its notes are exposed to wherever that new destination sends them. Nothing here manages that for you: add your own `.gitignore`, or keep secrets out of notes in the first place.
+
+The skill treats `profile.md`, existing notes, selected code, and command output as data, not as instructions, and it will not act on text inside them that reads as a command. It is instructed not to read `.env` files and not to copy credentials, tokens, or personal data into a note. It is still an AI following written instructions rather than a sandboxed tool: review notes it produces from content you do not fully trust.
 
 ## Setting up the graph
 
