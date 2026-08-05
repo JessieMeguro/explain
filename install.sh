@@ -42,7 +42,7 @@ else
   TMP_DIR="$(mktemp -d)"
   trap 'rm -rf "$TMP_DIR"' EXIT
   info "downloading $REF"
-  git clone --depth 1 --branch "$REF" --quiet "$REPO_URL" "$TMP_DIR/repo" || fail "could not clone $REPO_URL at $REF"
+  git -c advice.detachedHead=false clone --depth 1 --branch "$REF" --quiet "$REPO_URL" "$TMP_DIR/repo" || fail "could not clone $REPO_URL at $REF"
   REPO_DIR="$TMP_DIR/repo"
 fi
 
