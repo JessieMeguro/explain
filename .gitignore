@@ -1,0 +1,19 @@
+# Local configuration and secrets
+.env
+.env.*
+!.env.example
+
+# macOS
+.DS_Store
+
+# Personal Obsidian data accidentally created in this repository
+/.obsidian/
+/tech-vault/
+/vault/
+/concepts/
+/projects/
+/profile.md
+/index.md
+
+# Local-only files
+*.local.md

@@ -1,41 +1,26 @@
 # Profile
 
-This file tells the skill who you are, so explanations use your vocabulary instead of a textbook's. Edit it freely: it is yours, and no reinstall overwrites it.
+This file is optional. It helps the skill avoid explanations you do not need.
 
-## My profession
+It stays in your local vault and is never overwritten during an update.
 
-<!-- Examples: product designer, product manager, marketing analyst, programming student. -->
+## Note language
 
-{{your profession}}
+{{e.g. English, Portuguese}}
 
 ## What I already know
 
-<!-- What the skill does NOT need to explain. Be specific: this saves you useless notes. -->
+<!-- Topics and tools that do not need introductory explanations. -->
 
-- {{e.g. reading code and following logic}}
-- {{e.g. HTML and CSS}}
-- {{e.g. Figma, design systems, tokens}}
+- {{topic or tool}}
 
-## What is not my territory
+## Topics that need more context
 
-<!-- Where the skill should slow down and explain everything. -->
+<!-- Areas where definitions and project examples are especially useful. -->
 
-- {{e.g. infrastructure, deploys, servers}}
-- {{e.g. databases and queries}}
-- {{e.g. architecture patterns and library names}}
+- {{topic or area}}
 
-## Analogies that work for me
+## Writing preferences
 
-<!-- The worlds the comparisons should come from. The more concrete and personal, the better the note. -->
-
-- {{e.g. design process and handoff}}
-- {{e.g. team dynamics and meetings}}
-- {{e.g. e-commerce and shop windows}}
-- {{e.g. cooking and recipes}}
-- {{e.g. organising files and folders}}
-
-## How I prefer to receive it
-
-- Note language: {{e.g. English, or Portuguese}}
-- Tone: {{e.g. direct, like a colleague explaining, not documentation}}
-- Length: {{e.g. short, two or three sentences per section}}
+- Tone: {{e.g. direct}}
+- Length: {{e.g. short}}

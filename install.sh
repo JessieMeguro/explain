@@ -58,7 +58,7 @@ if [ -f "$VAULT_PATH/profile.md" ]; then
   skip "profile.md, left as it was"
 else
   cp "$SKILL_SRC/assets/profile-template.md" "$VAULT_PATH/profile.md"
-  ok "profile.md created (fill it in so the skill knows you)"
+  ok "profile.md created (optional)"
 fi
 
 # --- 3. Install the skill --------------------------------------------------
@@ -78,10 +78,10 @@ cat <<EOF
 
 done.
 
-  1. Fill in $VAULT_PATH/profile.md with your profession and your analogies.
+  1. Optionally fill in $VAULT_PATH/profile.md with your language and existing knowledge.
   2. Open $VAULT_PATH in Obsidian, with "Open folder as vault".
   3. Restart your agent so it loads the skill.
 
-From then on the skill documents on its own at the end of each delivery.
+The skill documents concepts needed to understand or maintain a delivery.
 On demand: /explain-it-to-me <term>. To review what you have: /explain-it-to-me review.
 EOF

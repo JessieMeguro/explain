@@ -8,50 +8,54 @@ confidence: not-reviewed
 # {{HUMAN TITLE OF THE CONCEPT}}
 
 <!--
-Frontmatter keys stay in English in every vault.
-Prose and headings go in the reader's language, from profile.md.
+Frontmatter keys stay in English.
+Write headings and prose in the reader's language.
+Keep only the required sections and the optional sections that add useful information.
 -->
-
-## The problem it solved here
-
-{{Open on something they can look at: name the file, quote the real lines, then say what happened to them. Never presume an action they may not have taken. A list of design requirements is not a scene.}}
 
 ## What it is
 
-{{First a plain sentence under fifteen words, standing alone, no second clause. Then two or three sentences building on it. One term new to the reader per paragraph, at most.}}
+{{A short, technically correct definition. Explain only the terms required to understand it.}}
+
+## Where it appears here
+
+{{Name the relevant file, code, output, or behaviour. Explain why the concept is present and its practical effect. If there is no project-specific occurrence, say where the reader is likely to encounter it.}}
+
+<!--
+Optional: include only when a change has a meaningful consequence.
+Replace the heading with the exact action and object, such as:
+"If you rename this note" or "If you change the vault path".
+Never keep a vague heading such as "If you change it".
+-->
+## {{SPECIFIC ACTION AND OBJECT}}
+
+{{The relevant consequence, dependency, setting, or safe adjustment.}}
+
+<!--
+Optional sections. Delete any that do not improve the note:
+
+## Example
+{{Prefer a real example from the project.}}
+
+## Common mistake
+{{A mistake the reader could realistically make.}}
 
 ## Analogy
+{{Use only if it is clearer than the direct explanation. State its limit when needed.}}
 
-{{One comparison from ordinary life anyone has lived: drawers, a queue, a recipe, post-its, sending a letter. Never from software or a developer's workflow, even when the concept is about software.}}
-
-**Where the analogy breaks:** {{the limit the reader would hit on their own}}
-
-## Where it is
-
-- `{{path/to/file.ext}}` line {{N}}
-- Project: [[{{project-name}}]]
-
-## If I need to change it
-
-- **Main risk:** {{what breaks if this is changed carelessly}}
-- **Most common mistake:** {{the classic stumble for someone new to this}}
-- **Safe to adjust:** {{the number or snippet they can change without fear, if any}}
-
-## Test yourself
-
-{{One question that requires producing an answer, not recognising one. Yes/no questions verify nothing.}}
+## Check your understanding
+{{One focused question, followed by a collapsed answer.}}
 
 <details><summary>answer</summary>
 
-{{The answer, so they can check themselves after trying.}}
+{{Answer}}
 
 </details>
 
 ## Connected to
-
-- [[{{parent-concept}}]]
-- [[{{sibling-concept}}]]
+- [[{{existing-related-note}}]]
+-->
 
 ## My notes
 
-<!-- Their space. The AI never writes here, except to transcribe their own words during review mode. -->
+<!-- The AI writes here only to transcribe the reader's own words during review mode. -->
