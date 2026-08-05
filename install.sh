@@ -83,5 +83,5 @@ done.
   3. Restart your agent so it loads the skill.
 
 From then on the skill documents on its own at the end of each delivery.
-On demand: /explain <term>. To review what you have: /review.
+On demand: /explain-it-to-me <term>. To review what you have: /explain-it-to-me review.
 EOF

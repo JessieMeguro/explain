@@ -60,9 +60,11 @@ The skill fires on its own after each delivery. You do not have to ask.
 
 | Command | What happens |
 |---|---|
-| `/explain <term>` | Documents that one concept and nothing else |
-| Select code, then invoke the skill | Documents the central concept in the selection |
-| `/review` | Asks you what a concept is, without showing you the note |
+| `/explain-it-to-me <term>` | Documents that one concept and nothing else |
+| `/explain-it-to-me` with code selected | Documents the central concept in the selection |
+| `/explain-it-to-me review` | Asks you what a concept is, without showing you the note |
+
+The commands use the skill's own name on purpose. A shorter `/explain` would collide with a command most editors already define, and the two sets of instructions pull in opposite directions.
 
 ## The vault
 
@@ -94,7 +96,7 @@ If you would rather not leave your editor, the **Foam** extension renders graphs
 
 Capture is the part the skill handles. Recall is the part it cannot do for you.
 
-Once a week, run `/review`. It picks the notes you have not reviewed, asks what one of them means without showing you the answer, and only marks it reviewed once you have written your version under "My notes". Rewriting a concept in your own words is what moves it into your head. Rereading the AI's paragraph does not.
+Once a week, run `/explain-it-to-me review`. It picks the notes you have not reviewed, asks what one of them means without showing you the answer, and only marks it reviewed once you have written your version under "My notes". Rewriting a concept in your own words is what moves it into your head. Rereading the AI's paragraph does not.
 
 ## Where people get this wrong
 

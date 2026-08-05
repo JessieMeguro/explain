@@ -14,7 +14,7 @@ Prose and headings go in the reader's language, from profile.md.
 
 ## The problem it solved here
 
-{{A moment that happened, in the second person. What they were doing, and what went wrong or would have gone wrong. A list of design requirements is not a scene.}}
+{{Open on something they can look at: name the file, quote the real lines, then say what happened to them. Never presume an action they may not have taken. A list of design requirements is not a scene.}}
 
 ## What it is
 
@@ -54,4 +54,4 @@ Prose and headings go in the reader's language, from profile.md.
 
 ## My notes
 
-<!-- Their space. The AI never writes here, except to transcribe their own words during /review. -->
+<!-- Their space. The AI never writes here, except to transcribe their own words during review mode. -->

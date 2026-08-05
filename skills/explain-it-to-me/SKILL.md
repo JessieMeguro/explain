@@ -60,9 +60,19 @@ Fire on demand too, whenever they ask what something is.
 
 7. **Summarise in the chat**, in 5 lines or fewer: what was built, which notes you created, and the one thing they need to know to change it alone later.
 
+## Commands
+
+Invoke the skill by its own name, so nothing collides with a command the editor already owns:
+
+| Written by the reader | Mode |
+|---|---|
+| `/explain-it-to-me <term>` | Selection mode, below |
+| `/explain-it-to-me` with code selected | Selection mode, on the selection |
+| `/explain-it-to-me review` | Review mode, below |
+
 ## Selection mode
 
-When they ask for a specific term, with `/explain <term>` or with a snippet selected in the editor, document **only that**. Do not sweep the project, do not create context notes they did not ask for.
+When they ask for a specific term, with `/explain-it-to-me <term>` or with a snippet selected in the editor, document **only that**. Do not sweep the project, do not create context notes they did not ask for.
 
 - **Named term:** follow the normal flow for that single concept.
 - **Selected code with no term:** identify the central concept in the snippet, say which one you picked, and document it. If more than one strong candidate exists, ask before writing.
@@ -70,7 +80,7 @@ When they ask for a specific term, with `/explain <term>` or with a snippet sele
 
 ## Review mode
 
-When they ask for `/review`, the point is not for you to explain again. It is for them to recall the concept from memory, because rereading the AI's note transfers nothing and rewriting it in their own words does.
+When they ask for `/explain-it-to-me review`, the point is not for you to explain again. It is for them to recall the concept from memory, because rereading the AI's note transfers nothing and rewriting it in their own words does.
 
 1. List the notes in `concepts/` with `confidence: not-reviewed` in the frontmatter. If there are many, take the 3 oldest.
 2. For each one, ask **one** open question and do not show the note: "what is `debounce`, in your own words?"
@@ -115,9 +125,15 @@ Never build the analogy out of software, tooling or a developer's workflow, even
 
 **Local why.** They need to know why this concept exists in THEIR project, not the textbook definition. "It is used for X" is weak. "It is here because without it the page would reload on every keystroke" is strong.
 
-### Open the note with a scene, not a rationale
+### Open the note with something they can look at
 
-"The problem it solved here" is a moment that happened, told in the second person: what they were doing, what went wrong or would have gone wrong. A list of design requirements is not a scene, and three requirements in one sentence is the most common version of this failure.
+"The problem it solved here" opens on a real artifact, not on a narrated situation. Put the thing on the page first: the actual line from their file, the actual output, the actual file that appeared. Then say what happened to it. A reader who can open the file and see the same two lines you quoted is standing on solid ground before the first explanation arrives.
+
+Two failures to avoid, in order of how often they happen:
+
+**Never presume an action.** "You opened the graph and saw", "you noticed that", "you tried to" are all fiction unless you have evidence they did it. Presumed scenes read as abstract because the reader is being asked to remember something that never happened to them. Anchor in what exists instead: a file you can name, a line you can quote, an event you both witnessed in this conversation.
+
+**A list of requirements is not a scene.** Three design constraints in one sentence is the most common version of this. If the opening could have been written before the project existed, it is a rationale, not a scene.
 
 ### At the hardest point, a worked example rather than an image
 
