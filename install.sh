@@ -3,7 +3,7 @@ set -euo pipefail
 
 # Installer for the explain-it-to-me skill.
 # Two ways to run it:
-#   curl -fsSL https://raw.githubusercontent.com/JessieMeguro/explain/v1.1.0/install.sh | bash
+#   curl -fsSL https://raw.githubusercontent.com/JessieMeguro/explain/v1.2.0/install.sh | bash
 #   ./install.sh   (from inside a clone of the repository)
 #
 # The remote path is pinned to a tag, not a branch, so a future push to the
@@ -12,7 +12,7 @@ set -euo pipefail
 # together; do not point at "main".
 
 REPO_URL="https://github.com/JessieMeguro/explain.git"
-REF="${EXPLAIN_REF:-v1.1.0}"
+REF="${EXPLAIN_REF:-v1.2.0}"
 SKILL_NAME="explain-it-to-me"
 VAULT_PATH="${VAULT_PATH:-$HOME/tech-vault}"
 

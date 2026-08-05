@@ -31,15 +31,15 @@ You need a coding agent (Cursor or Claude Code), `git`, and [Obsidian](https://o
 ## Install
 
 ```bash
-curl -fsSL https://raw.githubusercontent.com/JessieMeguro/explain/v1.1.0/install.sh | bash
+curl -fsSL https://raw.githubusercontent.com/JessieMeguro/explain/v1.2.0/install.sh | bash
 ```
 
-The URL is pinned to a tagged release, `v1.1.0`, rather than to a branch. A future push to this repository cannot change what that exact command downloads and runs. Upgrading means deliberately switching to a newer tag once one exists.
+The URL is pinned to a tagged release, `v1.2.0`, rather than to a branch. A future push to this repository cannot change what that exact command downloads and runs. Upgrading means deliberately switching to a newer tag.
 
 Or clone first, if you would rather read the script before running it:
 
 ```bash
-git clone --branch v1.1.0 https://github.com/JessieMeguro/explain.git
+git clone --branch v1.2.0 https://github.com/JessieMeguro/explain.git
 cd explain && ./install.sh
 ```
 
